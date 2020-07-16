@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Image, Dimensions, StyleSheet} from 'react-native';
+import { View, Image, Dimensions, StyleSheet, StatusBar } from 'react-native';
 
 const { height, width } = Dimensions.get('window')
 
 const SplashScreen = () => {
     return(
         <View style={style.main}>
+            <StatusBar backgroundColor='transparent' barStyle='dark-content'/>
             <Image source={require('../assets/img/splashx3.png')} resizeMode='contain' style={style.img}/>
         </View>
     )

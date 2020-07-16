@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, SafeAreaView, StyleSheet, TextInput, Image } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, StatusBar, Image } from 'react-native'
 import { Button } from 'react-native-elements'
 import { styles, Colors } from '../../style';
 import LoginForm from '../components/account/LoginForm';
@@ -8,12 +8,15 @@ const Login = ({ navigation }) => {
     return(
         <>
         <SafeAreaView style={[styles.mainContainer, { backgroundColor: Colors.gray, paddingHorizontal: 15}]}>
+        <StatusBar backgroundColor={Colors.gray} barStyle='dark-content'/>
+
             <View  style={loginStyle.mainLogin}>
                 <View style={[styles.row,{ paddingTop: 20, justifyContent: 'flex-end'}]}>
                     <Button 
                         title='Sign Up' 
                         onPress={() => navigation.navigate('Register')}
                         buttonStyle={loginStyle.loginBtn}
+                        titleStyle={{ color: Colors.pink}}
                     />
                 </View>
                 <View style={[ styles.center]}>
@@ -56,7 +59,7 @@ const loginStyle = StyleSheet.create({
         marginVertical: 20
     },
     loginBtn: {
-        backgroundColor: Colors.indigo,
+        backgroundColor: 'transparent',
         padding: 10
     },
     footer: {
