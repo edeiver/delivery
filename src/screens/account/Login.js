@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, SafeAreaView, StyleSheet, StatusBar, Image } from 'react-native'
 import { Button } from 'react-native-elements'
-import { styles, Colors } from '../../style';
-import LoginForm from '../components/account/LoginForm';
+import { styles, Colors } from '../../../style';
+import LoginForm from '../../components/account/LoginForm';
 
 const Login = ({ navigation }) => {
     return(
@@ -23,14 +23,14 @@ const Login = ({ navigation }) => {
                     <Text style={loginStyle.title}>Inicia sesion</Text>
                 </View>
                 <View style={loginStyle.profile}>
-                    <Image source={require('../assets/img/profile.png')} style={styles.imgRound}/>
+                    <Image source={require('../../assets/img/profile.png')} style={styles.imgRound}/>
                 </View>
                 <LoginForm/>
             </View>
           
         </SafeAreaView>
         <View style={loginStyle.footer}>
-                <Image source={require('../assets/img/wave.png')} style={styles.wave}/>
+                <Image source={require('../../assets/img/wave.png')} style={styles.wave}/>
         </View>
         </>
         

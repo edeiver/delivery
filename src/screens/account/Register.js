@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, SafeAreaView, Button} from 'react-native'
-import { styles, Colors } from '../../style'
+import { styles, Colors } from '../../../style'
 
 const Register = ({ navigation }) => {
     return(

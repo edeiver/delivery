@@ -1,15 +1,15 @@
 import React from 'react'
-import { View, Text, SafeAreaView} from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import { styles } from '../../../style'
 
-const Cart = () => {
-    return(
+const MyAccount = () => {
+    return (
         <View style={[styles.mainContainer, styles.center]}>
             <SafeAreaView>
-                <Text>CART</Text>
+                <Text> MY ACCOUNT </Text>
             </SafeAreaView>
         </View>
     )
-} 
+}
 
-export default Cart
+export default MyAccount
