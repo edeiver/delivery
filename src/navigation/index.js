@@ -1,34 +1,41 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AccountStack from './AccountStack';
 import SplashScreen from '../screens/SplashScreen';
 import TabNavigator from './BottomTab';
+import {AuthContext} from '../Context';
 
 const Navigator = () => {
-    const [ token, setToken ] = useState(null)
+
+   /*  const [ token, setToken ] = useState(null)
     const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
         
         const fakeLoginAndToken = () => {
             setLoading(true)
-                setTimeout(() => {
-                    setLoading(false)
+
+            setTimeout(() => {
                     setToken('fake_token')
+                    setLoading(false)
                 }, 2000);
         }
+
         fakeLoginAndToken()
-    }, [token])
+    }, [token]) */
+
+    const { isLogin, loading } = useContext(AuthContext);
+    console.log(loading)
 
     return(
         <NavigationContainer>
             {
                 loading ? 
                 <SplashScreen/>
-                : token ?
+                : isLogin ?
                 <TabNavigator/>
                 :
-                <AccountStack setToken={setToken}/>
+                <AccountStack/>
                 }
         </NavigationContainer>
     )

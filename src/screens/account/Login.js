@@ -64,8 +64,8 @@ const loginStyle = StyleSheet.create({
     },
     footer: {
         color: 'blue'
-    }
-
+    },
+   
 })
 
 export default Login

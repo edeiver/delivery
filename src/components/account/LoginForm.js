@@ -1,20 +1,83 @@
-import React from 'react';
-import { TextInput, StyleSheet, View } from 'react-native'
+import React, { useContext, useState } from 'react';
+import { TextInput, StyleSheet, View, AsyncStorage, ActivityIndicator, Dimensions } from 'react-native'
 import { Button } from 'react-native-elements'
 import { styles, Colors } from '../../../style';
+import Axios from 'axios';
+import { URL } from '../../api';
+import { AuthContext } from '../../Context';
+
+const { height, width} = Dimensions.get('window')
 
 const LoginForm = () => {
+
+    const { activateAuth } = useContext(AuthContext)
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ loading, setLoading ] = useState(false);
+    const [ error, setError ] = useState({});
+
+    const Login = async () => {
+        setLoading(true)
+        let errorMsj = {};
+        if (!email || !password) {
+            !email && (errorMsj.email = 'necsitas escribir el email, para inicar sesion')
+            !password && (errorMsj.password = 'necsitas escribir el email, para inicar sesion')
+            setLoading(false)
+        } else {
+           Axios.post(`${URL}users/login/`, {
+               email,
+               password,
+           })
+           .then((res) => {
+               const { access_token, user: { email, first_name } } = res.data
+               setLoading(false)
+               activateAuth(access_token)
+           })
+           .catch((error) => {
+               console.log(error)
+               setLoading(false)
+           })
+        }
+    }
+    if (loading) {
+        return(
+
+        <View style={[styles.center]}>
+            <View style={[loginStyle.card, styles.center]}>
+                <ActivityIndicator size='large' color={Colors.indigo}/>
+            </View>
+        </View>
+        )
+    }
+
     return(
         <View>
             <View style={[styles.center, styles.shadow, { paddingHorizontal: 20}]}>
-                    <TextInput placeholder='delivery@delivery.com' style={loginStyle.input}/>
-                    <TextInput placeholder='*********************' style={loginStyle.input}/>
+                    <TextInput 
+                        placeholder='delivery@delivery.com' 
+                        style={loginStyle.input} 
+                        onChange={ e => setEmail(e.nativeEvent.text)}
+                        keyboardType='email-address'
+                        autoCapitalize='none'
+                        autoCorrect={false}
+
+                    />
+                    <TextInput 
+                        placeholder='*********************' 
+                        style={loginStyle.input}
+                        onChange={ e => setPassword(e.nativeEvent.text)}
+                        secureTextEntry={true}
+                        autoCapitalize='none'
+                        autoCorrect={false}
+
+                    />
             </View>
             <View style={loginStyle.mainLogin}>
                     <Button
                         title='Login'
                         containerStyle={[styles.fullWidth, {borderRadius: 30,marginVertical: 20}]}
-                        buttonStyle={loginStyle.loginBtn}                      
+                        buttonStyle={loginStyle.loginBtn}
+                        onPress={Login}                   
                     />
             </View>
         </View>
@@ -48,6 +111,12 @@ const loginStyle = StyleSheet.create({
     },
     footer: {
         color: 'blue'
+    },
+    card:{
+        width: 100,
+        height: 100,
+        borderRadius: 20,
+        backgroundColor: '#fff'
     }
 
 })

@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const Colors = {
     green: '#34c759',
+    ligthIndigo: '#ACABEB',
     indigo: '#5856d6',
     pink: '#f82752',
     red: '#ff3b30',
@@ -56,6 +57,9 @@ export const styles = StyleSheet.create({
         width: '100%',
         overflow: "hidden",
 
+    },
+    safePadding: {
+        paddingHorizontal: 20
     }
 })
 

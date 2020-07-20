@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text,  } from 'react-native'; 
 import { styles } from './style';
-import Navigator from './src/navigation'
+import Navigator from './src/navigation';
+import AuthContext from './src/Context';
 const App = () => {
   return(
-    <Navigator/>
+    <AuthContext.Provider>
+      <Navigator/>
+    </AuthContext.Provider>
     
   )
 }

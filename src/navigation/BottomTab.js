@@ -18,16 +18,16 @@ const TabNavigator = () => {
                 tabBarIcon: ({ focused }) =>{
                     let iconName;
                     if (route.name ==='Home') {
-                        focused ? iconName = require('../assets/icons/home-indigo.png') : iconName = require('../assets/icons/home-gray.png')
+                        focused ? iconName = require('../assets/icons/home-indigo.png') : iconName = require('../assets/icons/home.png')
                     } else if (route.name === 'Cart') {
-                        focused ? iconName = require('../assets/icons/cart-indigo.png'): iconName = require('../assets/icons/cart-gray.png')
+                        focused ? iconName = require('../assets/icons/cart-indigo.png'): iconName = require('../assets/icons/car-gray.png')
                     } else if (route.name === 'Explore') {
                         focused ? iconName = require('../assets/icons/explore-indigo.png') : iconName = require('../assets/icons/explore-gray.png')
                     } else if (route.name === 'MyAccount') {
                         focused ? iconName = require('../assets/icons/profile-user-indigo.png') : iconName = require('../assets/icons/profile-user-gray.png')
                     }
                     return (
-						<Image source={iconName} resizeMode="contain" style={{ height: 26, width: 26, marginTop: 7}} />
+						<Image source={iconName} resizeMode="contain" style={{ height: 23, width: 23, marginTop: 7}} />
 					);
                 }
             })
