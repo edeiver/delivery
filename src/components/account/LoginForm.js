@@ -3,7 +3,7 @@ import { TextInput, StyleSheet, View, Text, ActivityIndicator, Dimensions } from
 import { Button } from 'react-native-elements'
 import { styles, Colors } from '../../../style';
 import Axios from 'axios';
-import { URL } from '../../api';
+import { URL, URL_ip} from '../../api';
 import { AuthContext } from '../../Context';
 
 const { height, width} = Dimensions.get('window')
@@ -15,6 +15,11 @@ const LoginForm = () => {
     const [ password, setPassword ] = useState('');
     const [ loading, setLoading ] = useState(false);
     const [ error, setError ] = useState({});
+    const headers = {
+        'Content-Type': 'application/json',
+        'Accept': "application/json",
+
+      }
 
     const Login = async () => {
         setLoading(true)
@@ -29,7 +34,9 @@ const LoginForm = () => {
            Axios.post(`${URL}users/login/`, {
                email,
                password,
-           })
+           }/* , {
+               headers
+           } */)
            .then((res) => {
                const { access_token, user: { email, first_name } } = res.data
                setLoading(false)
@@ -37,14 +44,17 @@ const LoginForm = () => {
            })
            .catch((error) => {
                console.log(error)
+               error && (errorMsj.errorNet ='Error de servidor')
+               setError(errorMsj)
                setLoading(false)
            })
         }
+        setLoading(false)
+
 
     }
     if (loading) {
         return(
-
         <View style={[styles.center]}>
             <View style={[loginStyle.card, styles.center]}>
                 <ActivityIndicator size='large' color={Colors.indigo}/>
@@ -54,7 +64,7 @@ const LoginForm = () => {
     }
 
     return(
-        <View>
+        < >
             <View style={[styles.center, styles.shadow, { paddingHorizontal: 20}]}>
                     <TextInput 
                         placeholder='delivery@delivery.com' 
@@ -92,8 +102,13 @@ const LoginForm = () => {
                         buttonStyle={loginStyle.loginBtn}
                         onPress={Login}                   
                     />
+ {error.errorNet && (
+                        <View style={[loginStyle.error, styles.safePadding, styles.center]}>
+                            <Text style={loginStyle.errorText}>{error.errorNet}</Text>
+                        </View>
+                    )}                    
             </View>
-        </View>
+        </>
     )
 }
 
@@ -132,7 +147,7 @@ const loginStyle = StyleSheet.create({
         backgroundColor: '#fff'
     },
     error: { 
-        width: width-80, 
+        //width: width-80, 
         //marginHorizontal: 40,
         paddingVertical: 5, 
         marginVertical: 10, 
@@ -142,7 +157,8 @@ const loginStyle = StyleSheet.create({
     },
     errorText: {
         color: '#fff',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 
 })

@@ -54,9 +54,10 @@ const Pizza = ({ navigation }) => {
                pizzaList.map((pizza) => (
                 
                 <TouchableOpacity style={[localStyles.card, styles.center]} key={pizza.id} onPress={() => navigation.navigate('DetailProduct', {pizzaData: pizza})}>
-                    <View style={localStyles.imgView}>
+                    {/* <View style={localStyles.imgView}>
                         <Image source={{ uri: pizza.img}} style={localStyles.img} resizeMode='contain'/>
-                    </View>
+                    </View> */}
+                        <Image source={{ uri: pizza.img}} style={localStyles.img}/>
                     <Text style={[styles.fontLato, { fontSize: 20, letterSpacing: 0.3}]}>{pizza.description}</Text>
                     <Text style={[styles.fontLatoBold, { fontSize: 20}]}>{pizza.price}</Text>
 
@@ -78,18 +79,15 @@ const localStyles = StyleSheet.create({
 
     },
     imgView: {
-    
         position: 'absolute',
-        top: -70,
-        width: 137,
-        height: 137,
-       
+        top: -70, 
     },
     img:{
-        height: 137,
-        width: 137,
-        borderRadius: 137/2,
-        overflow: "hidden",
+        position: 'absolute',
+        top: -50, 
+        height: 120,
+        width: 120, 
+        borderRadius: 120/2
     },
     descriptionText: {
         marginTop: 10,

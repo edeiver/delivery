@@ -1,4 +1,4 @@
-#Sat Jul 18 21:40:35 COT 2020
+#Fri Jul 24 21:39:56 COT 2020
 base.0=/Users/EdeiverB/Documents/Proyectos/Delivery/delivery/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -12,8 +12,8 @@ const AppStack = () => {
             headerMode='none'
             initialRouteName='BottomTab'
         >
-            <Stack.Screen name='DetailProduct' component={DetailProduct}/>
             <Stack.Screen name='BottomTab' component={TabNavigator}/>
+            <Stack.Screen name='DetailProduct' component={DetailProduct}/>
         </Stack.Navigator>
     )
 }

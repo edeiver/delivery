@@ -73,7 +73,7 @@ const DetailProduct = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.center, stylesDetail.marginTop]}>
-                    <Image source={{ uri: pizzaData.img}} style={{ width: 200, height: 200, borderRadius: 200/2,}}/>
+                    <Image source={{ uri: pizzaData.img}} style={{height: 205,width: 205, borderRadius: 205/2}}/>
                 </View>
                 <View style={[styles.row, styles.spaceBetween, stylesDetail.marginTop]}>
                 <Text style={[ styles.fontLatoBold, stylesDetail.textDescription]}>{pizzaData.description.toUpperCase()}</Text>
@@ -100,23 +100,23 @@ const stylesDetail = StyleSheet.create({
         backgroundColor: Colors.gray
     },
     img: {
-        width: 20,
-        height: 20,
+        width: 30,
+        height: 30,
     },
     marginTop: {
         marginTop: height*0.10
     }, 
     textPrice :{
-        fontSize: 20,
+        fontSize: 22,
         color: Colors.green
     },
     textName :{
-        fontSize: 20,
+        fontSize: 22,
         color: Colors.darkBlack,
     },
     textLabel: {
         color: Colors.ligthIndigo,
-        fontSize: 18
+        fontSize: 20
     },
     textDescription :{
         color: Colors.darkBlack,
