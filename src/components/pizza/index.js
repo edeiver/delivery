@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import {View, Text, ScrollView, StyleSheet, Button, Image, ColorPropType } from 'react-native';
-import { styles,  } from '../../../style';
+import {View, Text, ScrollView, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { styles, Colors,  } from '../../../style';
 
-const Pizza = () => {
+const Pizza = ({ navigation }) => {
+    console.log('pizza: ', navigation)
     const [ pizzaList, setPizzaList ] = useState([
         {
             id: 1,
             description: 'pizza medium',
             price: '20.000',
             restaurantName: 'Pizza donde Edeiver',
-            stars: '5',
+            stars: '1',
             img: 'https://cdn.pixabay.com/photo/2016/02/16/07/39/pizza-1202775__340.jpg'
         },
         {
@@ -17,7 +18,7 @@ const Pizza = () => {
             description: 'pizza small',
             price: '20.000',
             restaurantName: 'Pizza donde Edeiver',
-            stars: '5',
+            stars: '2',
             img: 'https://cdn.pixabay.com/photo/2015/02/01/05/20/supreme-pizza-619133__340.png'
         },
         {
@@ -25,7 +26,7 @@ const Pizza = () => {
             description: 'pizza large',
             price: '20.000',
             restaurantName: 'Pizza donde Edeiver',
-            stars: '5',
+            stars: '4',
             img: 'https://cdn.pixabay.com/photo/2016/06/08/00/03/pizza-1442946__340.jpg'
         },
         {
@@ -41,7 +42,7 @@ const Pizza = () => {
             description: 'pizza XXl',
             price: '20.000',
             restaurantName: 'Pizza donde Edeiver',
-            stars: '5',
+            stars: '3',
             img: 'https://cdn.pixabay.com/photo/2016/04/09/09/22/pizza-1317699__340.jpg'
         },
 
@@ -51,17 +52,17 @@ const Pizza = () => {
            <View style={[styles.row, styles.safePadding, {alignItems: 'center'}]}>
            {
                pizzaList.map((pizza) => (
-                <View style={[localStyles.card, styles.center]} key={pizza.id}>
+                
+                <TouchableOpacity style={[localStyles.card, styles.center]} key={pizza.id} onPress={() => navigation.navigate('DetailProduct', {pizzaData: pizza})}>
                     <View style={localStyles.imgView}>
                         <Image source={{ uri: pizza.img}} style={localStyles.img} resizeMode='contain'/>
                     </View>
-                    <Text>{pizza.description}</Text>
-               <Text>{pizza.price}</Text>
+                    <Text style={[styles.fontLato, { fontSize: 20, letterSpacing: 0.3}]}>{pizza.description}</Text>
+                    <Text style={[styles.fontLatoBold, { fontSize: 20}]}>{pizza.price}</Text>
 
-                </View>
+                </TouchableOpacity>
                ))
            }
-
            </View>
        </ScrollView>
     )
@@ -73,26 +74,22 @@ const localStyles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 15,
         marginTop: '8%',
-        marginRight: 10
+        marginRight: 15
 
     },
     imgView: {
     
-        //backgroundColor: '#fff',
-        zIndex: 4,
         position: 'absolute',
         top: -70,
         width: 137,
         height: 137,
-
-        borderRadius: 137/2,
-        overflow: "hidden"
        
     },
     img:{
         height: 137,
         width: 137,
-   
+        borderRadius: 137/2,
+        overflow: "hidden",
     },
     descriptionText: {
         marginTop: 10,

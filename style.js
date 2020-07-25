@@ -7,6 +7,10 @@ export const Colors = {
     pink: '#f82752',
     red: '#ff3b30',
     gray: '#F4F4F4',
+    darkBlack: '#162447',
+    darkBlue: '#1f4068',
+    ligthGray: '#fcfcfc',
+
 
 }
 
@@ -17,6 +21,9 @@ export const styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row'
+    },
+    column: {
+        flexDirection: 'column'
     },
     center: {
         justifyContent: "center",
@@ -60,6 +67,31 @@ export const styles = StyleSheet.create({
     },
     safePadding: {
         paddingHorizontal: 20
+    },
+    safePaddingTop: {
+        paddingTop: 20
+    },
+    fontMontserrat: {
+        fontFamily: 'Montserrat-Regular',
+    },
+    fontMontserratBold:{
+        fontFamily: 'Montserrat-Bold',
+
+    },
+    fontMontserratLight:{
+        fontFamily: 'Montserrat-Light',
+
+    },
+    fontLato: {
+        fontFamily: 'Lato-Regular'
+    },
+    fontLatoLight: {
+        fontFamily: 'Lato-Light'
+    },
+    fontLatoBold: {
+        fontFamily: 'Lato-Bold'
+
     }
+
 })
 

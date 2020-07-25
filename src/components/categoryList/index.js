@@ -40,7 +40,7 @@ const CategoryList = ({ setCategorySelected }) => {
                         >
                             <View style={[catStyles.card, styles.center]} >
                                 <Image source={category.image} style={catStyles.img} resizeMode='contain'/>
-                                <Text style={catStyles.descriptionText}>{category.description}</Text>
+                                <Text style={[catStyles.descriptionText, styles.fontLatoL,{ letterSpacing: 1.2, textAlign: "center"}]}>{category.description}</Text>
                             </View>
                         </TouchableOpacity>
                     ))

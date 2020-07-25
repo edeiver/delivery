@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { TextInput, StyleSheet, View, AsyncStorage, ActivityIndicator, Dimensions } from 'react-native'
+import { TextInput, StyleSheet, View, Text, ActivityIndicator, Dimensions } from 'react-native'
 import { Button } from 'react-native-elements'
 import { styles, Colors } from '../../../style';
 import Axios from 'axios';
@@ -20,10 +20,12 @@ const LoginForm = () => {
         setLoading(true)
         let errorMsj = {};
         if (!email || !password) {
-            !email && (errorMsj.email = 'necsitas escribir el email, para inicar sesion')
-            !password && (errorMsj.password = 'necsitas escribir el email, para inicar sesion')
+            !email && (errorMsj.email = 'Necesitas escribir el email, para inicar sesion')
+            !password && (errorMsj.password = 'Necesitas escribir la contraseña, para inicar sesion')
             setLoading(false)
+            setError(errorMsj)
         } else {
+            errorMsj = {};
            Axios.post(`${URL}users/login/`, {
                email,
                password,
@@ -38,6 +40,7 @@ const LoginForm = () => {
                setLoading(false)
            })
         }
+
     }
     if (loading) {
         return(
@@ -60,8 +63,13 @@ const LoginForm = () => {
                         keyboardType='email-address'
                         autoCapitalize='none'
                         autoCorrect={false}
-
+                        
                     />
+                    {error.email && (
+                        <View style={loginStyle.error}>
+                            <Text style={loginStyle.errorText}>{error.email}</Text>
+                        </View>
+                    )}
                     <TextInput 
                         placeholder='*********************' 
                         style={loginStyle.input}
@@ -71,7 +79,12 @@ const LoginForm = () => {
                         autoCorrect={false}
 
                     />
-            </View>
+                    {error.password && (
+                        <View style={loginStyle.error}>
+                            <Text style={loginStyle.errorText}>{error.password}</Text>
+                        </View>
+                    )}
+            </View> 
             <View style={loginStyle.mainLogin}>
                     <Button
                         title='Login'
@@ -117,6 +130,19 @@ const loginStyle = StyleSheet.create({
         height: 100,
         borderRadius: 20,
         backgroundColor: '#fff'
+    },
+    error: { 
+        width: width-80, 
+        //marginHorizontal: 40,
+        paddingVertical: 5, 
+        marginVertical: 10, 
+        backgroundColor: Colors.red,
+        alignItems: "center",
+        borderRadius: 15
+    },
+    errorText: {
+        color: '#fff',
+        fontWeight: 'bold'
     }
 
 })

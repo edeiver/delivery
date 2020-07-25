@@ -3,10 +3,16 @@ import { View, Text, SafeAreaView, StyleSheet, StatusBar, Image, TextInput} from
 import { styles, Colors } from '../../style'
 import CategoryList from '../components/categoryList'
 import Pizza from '../components/pizza'
+import Animated, { Value } from 'react-native-reanimated'
+import AnimatedBottomSheet from '../components/animated/AnimatedBottomSheet';
+import { TapGestureHandler, State } from 'react-native-gesture-handler'
 
 
-const Home = () => {
+const Home = ({ navigation}) => {
+    console.log(navigation)
+    let translateY = new Animated.Value(100);
     const [ categorySelected, setCategorySelected ] = useState('')
+    const bottomSheetState = new Value(State.UNDETERMINED)
     return (
         <SafeAreaView style={homeStyles.main}>
             <StatusBar backgroundColor={Colors.indigo}/>
@@ -14,20 +20,29 @@ const Home = () => {
             <View style={styles.mainContainer}>
                 <View style={[homeStyles.mainTop, homeStyles.safePadding]}>
                     <View style={[styles.row, styles.spaceBetween, homeStyles.safeMarginVertical ]}>
-                        <Text style={homeStyles.textName}>Entregar a: {'\n'}
-                            <Text style={homeStyles.textFullName}>Edeiver Barranco</Text>
+                        <Text style={[homeStyles.textName, styles.fontLato]}>Entregar a: {'\n'}
+                            <Text style={[homeStyles.textFullName, styles.fontLatoBold]}>Edeiver Barranco</Text>
                         </Text>
+                        {/* <Animated.View>
+                            <TapGestureHandler>
+                                <View style={homeStyles.imgView}>
+                                    <Image source={require('../assets/img/new_profile.png')} style={[styles.selfCenter]} resizeMode='contain'/>
+                                </View>
+                            </TapGestureHandler>
+                        </Animated.View> */}
                         <View style={homeStyles.imgView}>
                             <Image source={require('../assets/img/new_profile.png')} style={[styles.selfCenter]} resizeMode='contain'/>
                         </View>
                     </View>
                     <View style={[styles.row, homeStyles.viewInput, styles.center]} >
+            
                     <Image source={require('../assets/icons/search-Indigo.png')} style={{ marginLeft: 20}} resizeMode='contain' />
                         <TextInput 
-                            style={homeStyles.input} 
+                            style={[homeStyles.input, styles.fontLato]} 
                             placeholderTextColor={Colors.ligthIndigo}
                             placeholder='Busca tu comida'
                             inlineImageLeft='search'
+                            
                         />                        
                     </View>
                 </View>
@@ -39,7 +54,9 @@ const Home = () => {
                     {!categorySelected && (<Text style={{ marginTop: 100}}>Populares</Text>)}
                     {
                         categorySelected=== 1 && (
-                            <Pizza/>
+                            <Pizza
+                                navigation={navigation}
+                            />
                         )
                     }
                     {
@@ -52,6 +69,8 @@ const Home = () => {
                         categorySelected=== 4 && (<Text style={{ marginTop: 100}}>Ice-CREAM</Text>)
                     }
                 </View>
+               {/*  <AnimatedBottomSheet translateY={translateY}/> */}
+
             </View>
         </SafeAreaView>
     )
@@ -105,6 +124,7 @@ const homeStyles =  StyleSheet.create({
         height: 60,
         marginVertical: 20,
         padding: 10
+
     }
     
 

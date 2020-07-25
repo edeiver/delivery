@@ -5,7 +5,7 @@ import Home from '../screens/Home';
 import Cart from '../screens/order/Cart';
 import Explore from '../screens/explore';
 import MyAccount from '../screens/account/MyAccount';
-import { Colors } from '../../style';
+import { Colors, styles } from '../../style';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,30 +27,50 @@ const TabNavigator = () => {
                         focused ? iconName = require('../assets/icons/profile-user-indigo.png') : iconName = require('../assets/icons/profile-user-gray.png')
                     }
                     return (
-						<Image source={iconName} resizeMode="contain" style={{ height: 23, width: 23, marginTop: 7}} />
+						<Image source={iconName} resizeMode="contain" style={{ height: 23, width: 23, marginTop: 7, alignItems:'center'}} />
 					);
                 }
             })
             }
             tabBarOptions={{
-                activeTintColor: Colors.indigo
+                activeTintColor: Colors.indigo,
+                allowFontScaling: true,
+                /* labelPosition: "beside-icon",
+                tabStyle: [
+                    {
+                        borderRadius: 16
+                    }
+                ],*/
+                labelStyle: [styles.fontLato, { fontSize: 13.2}], 
             }}
         >
             <Tab.Screen
                 name='Home'
                 component={Home}
+                options={{
+                    tabBarLabel: 'Inicio'
+                }}
             />
             <Tab.Screen
                 name='Cart'
                 component={Cart}
+                options={{
+                    tabBarLabel: 'Carrito'
+                }}
             />
             <Tab.Screen
                 name='Explore'
                 component={Explore}
+                options={{
+                    tabBarLabel: 'Explora'
+                }}
             />
             <Tab.Screen
                 name='MyAccount'
                 component={MyAccount}
+                options={{
+                    tabBarLabel: 'Mi Cuenta'
+                }}
             />
 
         </Tab.Navigator>

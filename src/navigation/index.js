@@ -4,6 +4,7 @@ import AccountStack from './AccountStack';
 import SplashScreen from '../screens/SplashScreen';
 import TabNavigator from './BottomTab';
 import {AuthContext} from '../Context';
+import AppStack from './AppStack';
 
 const Navigator = () => {
 
@@ -33,7 +34,8 @@ const Navigator = () => {
                 loading ? 
                 <SplashScreen/>
                 : isLogin ?
-                <TabNavigator/>
+                //<TabNavigator/>
+                <AppStack/>
                 :
                 <AccountStack/>
                 }
