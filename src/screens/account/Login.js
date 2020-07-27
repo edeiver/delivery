@@ -29,9 +29,7 @@ const Login = ({ navigation }) => {
             </View>
           
         </SafeAreaView>
-        <View style={loginStyle.footer}>
-                <Image source={require('../../assets/img/wave.png')} style={styles.wave}/>
-        </View>
+
         </>
         
     )

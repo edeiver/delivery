@@ -17,7 +17,7 @@ const CategoryList = ({ setCategorySelected }) => {
         {
             id: 3,
             image: require('../../assets/img/salad.png'),
-            description: 'Salad'
+            description: 'Ensalada'
         },
         {
             id: 4,
@@ -54,7 +54,7 @@ const catStyles = StyleSheet.create({
     card: {
         borderRadius: 16,
         backgroundColor: '#fff',
-        width: 100,
+        width: 110,
         height: 150,
         padding: 10,
         marginHorizontal: 10

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Cart from '../screens/order/Cart';
@@ -18,16 +18,16 @@ const TabNavigator = () => {
                 tabBarIcon: ({ focused }) =>{
                     let iconName;
                     if (route.name ==='Home') {
-                        focused ? iconName = require('../assets/icons/home-indigo.png') : iconName = require('../assets/icons/home.png')
+                        focused ? iconName = require('../assets/icons/home-indigo.png') : iconName = require('../assets/icons/home-gray.png')
                     } else if (route.name === 'Cart') {
-                        focused ? iconName = require('../assets/icons/cart-indigo.png'): iconName = require('../assets/icons/car-gray.png')
+                        focused ? iconName = require('../assets/icons/shopping-cart-indigo.png'): iconName = require('../assets/icons/shopping-cart-gray.png')
                     } else if (route.name === 'Explore') {
-                        focused ? iconName = require('../assets/icons/explore-indigo.png') : iconName = require('../assets/icons/explore-gray.png')
+                        focused ? iconName = require('../assets/icons/map-pin-indigo.png') : iconName = require('../assets/icons/map-pin-gray.png')
                     } else if (route.name === 'MyAccount') {
-                        focused ? iconName = require('../assets/icons/profile-user-indigo.png') : iconName = require('../assets/icons/profile-user-gray.png')
+                        focused ? iconName = require('../assets/icons/user-indigo.png') : iconName = require('../assets/icons/user-gray.png')
                     }
                     return (
-						<Image source={iconName} resizeMode="contain" style={{ height: 23, width: 23, marginTop: 7, alignItems:'center'}} />
+						<Image source={iconName} resizeMode="contain" style={{ height: 25, width: 25, marginTop: 7, alignItems:'center'}} />
 					);
                 }
             })
@@ -41,7 +41,7 @@ const TabNavigator = () => {
                         borderRadius: 16
                     }
                 ],*/
-                labelStyle: [styles.fontLato, { fontSize: 13.2}], 
+                labelStyle: [styles.fontLato, { fontSize: 11.2, marginVertical: Platform.OS === 'android' ? 4 : null}], 
             }}
         >
             <Tab.Screen

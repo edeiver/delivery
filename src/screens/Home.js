@@ -16,7 +16,6 @@ const Home = ({ navigation}) => {
     return (
         <SafeAreaView style={homeStyles.main}>
             <StatusBar backgroundColor={Colors.indigo}/>
-        
             <View style={styles.mainContainer}>
                 <View style={[homeStyles.mainTop, homeStyles.safePadding]}>
                     <View style={[styles.row, styles.spaceBetween, homeStyles.safeMarginVertical ]}>
@@ -36,7 +35,7 @@ const Home = ({ navigation}) => {
                     </View>
                     <View style={[styles.row, homeStyles.viewInput, styles.center]} >
             
-                    <Image source={require('../assets/icons/search-Indigo.png')} style={{ marginLeft: 20}} resizeMode='contain' />
+                    <Image source={require('../assets/icons/search-Indigo.png')} style={{ marginLeft: 20, width: 25, height: 25}} resizeMode='contain' />
                         <TextInput 
                             style={[homeStyles.input, styles.fontLato]} 
                             placeholderTextColor={Colors.ligthIndigo}

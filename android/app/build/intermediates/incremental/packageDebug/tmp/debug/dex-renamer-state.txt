@@ -1,4 +1,7 @@
-#Fri Jul 24 21:39:56 COT 2020
-base.0=/Users/EdeiverB/Documents/Proyectos/Delivery/delivery/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Sun Jul 26 20:07:31 COT 2020
+base.0=D\:\\Users\\EdeiverB\\Documents\\Proyectos\\Delivery\\delivery\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=D\:\\Proyectos\\REACT NATIVE\\delivery\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { TextInput, StyleSheet, View, Text, ActivityIndicator, Dimensions } from 'react-native'
+import { TextInput, StyleSheet, View, Text, ActivityIndicator, Dimensions, KeyboardAvoidingView, Platform, Image } from 'react-native'
 import { Button } from 'react-native-elements'
 import { styles, Colors } from '../../../style';
 import Axios from 'axios';
@@ -65,6 +65,10 @@ const LoginForm = () => {
 
     return(
         < >
+        <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        >
+
             <View style={[styles.center, styles.shadow, { paddingHorizontal: 20}]}>
                     <TextInput 
                         placeholder='delivery@delivery.com' 
@@ -108,6 +112,13 @@ const LoginForm = () => {
                         </View>
                     )}                    
             </View>
+       
+
+            </KeyboardAvoidingView>
+        
+        {/* <View style={loginStyle.footer}>
+                <Image source={require('../../assets/img/wave.png')} style={styles.wave}/>
+        </View> */}
         </>
     )
 }
@@ -123,7 +134,7 @@ const loginStyle = StyleSheet.create({
     input: {
         width: '100%',
         borderRadius: 20,
-        paddingVertical: 15,
+        paddingVertical: 10,
         paddingHorizontal: 15,
         marginVertical: 10,
         backgroundColor: '#fff',
@@ -135,7 +146,8 @@ const loginStyle = StyleSheet.create({
     },
     loginBtn: {
         backgroundColor: Colors.indigo,
-        padding: 12,
+        paddingVertical: 10,
+        paddingHorizontal: 15,
     },
     footer: {
         color: 'blue'
@@ -149,8 +161,8 @@ const loginStyle = StyleSheet.create({
     error: { 
         //width: width-80, 
         //marginHorizontal: 40,
-        paddingVertical: 5, 
-        marginVertical: 10, 
+        padding: 5, 
+        marginVertical: 5, 
         backgroundColor: Colors.red,
         alignItems: "center",
         borderRadius: 15

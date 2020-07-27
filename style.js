@@ -10,6 +10,7 @@ export const Colors = {
     darkBlack: '#162447',
     darkBlue: '#1f4068',
     ligthGray: '#fcfcfc',
+    darkGray: '#BABABA'
 
 
 }
@@ -62,8 +63,7 @@ export const styles = StyleSheet.create({
     wave: {
         height: 150,
         width: '100%',
-        overflow: "hidden",
-
+     
     },
     safePadding: {
         paddingHorizontal: 20
